@@ -1,0 +1,27 @@
+.portfolio {
+    color: white;
+    background-color: #202020;
+    padding: 0 70px 125px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 770px) {
+    .portfolio {
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .portfolio {
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-bottom: 70px;
+    }
+}
+
+@import url(./blocks/__arrow-link/portfolio__arrow-link.css);
+@import url(./blocks/__item-title/portfolio__item-title.css);
+@import url(./blocks/__item/portfolio__item.css);
+@import url(./blocks/__title/portfolio__title.css);

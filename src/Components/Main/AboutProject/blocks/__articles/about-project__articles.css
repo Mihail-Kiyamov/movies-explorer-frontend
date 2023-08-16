@@ -1,0 +1,24 @@
+.about-project__articles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 40px;
+    margin-bottom: 110px;
+    padding-top: 70px;
+    border-top: 1px solid #DADADA;
+}
+
+@media screen and (max-width: 770px) {
+    .about-project__articles {
+        margin-bottom: 93px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .about-project__articles {
+        padding-top: 60px;
+        flex-direction: column;
+        row-gap: 56px;
+        margin-bottom: 60px;
+    }
+}

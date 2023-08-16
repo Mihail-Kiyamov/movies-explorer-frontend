@@ -1,0 +1,33 @@
+.login {
+    width: 396px;
+    margin: 0 auto;
+    padding: 70px 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 770px) {
+    .login {
+        padding-top: 232px;
+        padding-bottom: 232px; 
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .login {
+        padding-top: 56px;
+        padding-bottom: 30px; 
+    }
+}
+
+@import url(./blocks/__form-field/login__form-field.css);
+@import url(./blocks/__form-field/_type/login__form-field_type_email.css);
+@import url(./blocks/__form-field/_type/login__form-field_type_password.css);
+@import url(./blocks/__input/login__input.css);
+@import url(./blocks/__input/_type/login__input_type_passwor.css);
+@import url(./blocks/__logo/login__logo.css);
+@import url(./blocks/__signup-link/login__signup-link.css);
+@import url(./blocks/__submit-button/login__submit-button.css);
+@import url(./blocks/__text/login__text.css);
+@import url(./blocks/__title/login__title.css);

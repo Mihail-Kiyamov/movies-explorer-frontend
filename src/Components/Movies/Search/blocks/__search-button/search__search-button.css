@@ -1,0 +1,10 @@
+.search__search-button {
+    background-image: url(../../../../../images/FindArrow.svg);
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 34px;
+    position: absolute;
+    right: 6px;
+    cursor: pointer;
+}

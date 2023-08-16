@@ -1,0 +1,17 @@
+.movie-card__image {
+    width: 100%;
+    max-height: 203px;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 770px) {
+    .movie-card__image {
+        max-height: 190px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .movie-card__image {
+        max-height: 168px;
+    }
+}

@@ -1,0 +1,30 @@
+.search__hidden-checkbox-short-film+.search__visible-checkbox-short-film {
+    width: 36px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    background-color: #EBEBEB;
+}
+
+.search__hidden-checkbox-short-film:checked+.search__visible-checkbox-short-film {
+    background-color: #2BE080;
+}
+
+.search__hidden-checkbox-short-film+.search__visible-checkbox-short-film:after {
+    content: '';
+    height: 16px;
+    width: 16px;
+    border-radius: 16px;
+    position: absolute;
+    background-color: white;
+    top: 2px;
+    bottom: 0;
+    left: 3px;
+    transition: 0.2s;
+}
+
+.search__hidden-checkbox-short-film:checked+.search__visible-checkbox-short-film:after {
+    left: 18px;
+}

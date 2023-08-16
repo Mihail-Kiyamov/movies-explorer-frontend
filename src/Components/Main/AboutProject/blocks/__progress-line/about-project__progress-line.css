@@ -1,0 +1,5 @@
+.about-project__progress-line {
+    height: 36px;
+    display: flex;
+    justify-content: center;
+}

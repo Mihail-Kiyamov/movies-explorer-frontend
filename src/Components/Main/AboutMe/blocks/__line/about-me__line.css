@@ -1,0 +1,12 @@
+.about-me__line {
+    height: 1px;
+    width: 100%;
+    background-color: #DADADA;
+    margin-bottom: 66px;
+}
+
+@media screen and (max-width: 520px) {
+    .about-me__line {
+        margin-bottom: 60px;
+    }
+}

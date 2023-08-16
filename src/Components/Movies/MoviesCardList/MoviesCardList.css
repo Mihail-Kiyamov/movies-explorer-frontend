@@ -1,0 +1,21 @@
+.movies-list {
+    background-color: #202020;
+    padding: 70px 70px 80px;
+}
+
+@media screen and (max-width: 770px) {
+    .movies-list {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .movies-list {
+        padding: 40px 10px 80px;
+    }
+}
+
+@import url(../MoviesCard/MoviesCard.css);
+@import url(./blocks/__container/movies-list__container.css);
+@import url(./blocks/__more-button/movies-list__more-button.css);

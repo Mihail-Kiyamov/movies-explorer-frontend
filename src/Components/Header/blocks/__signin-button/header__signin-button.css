@@ -1,0 +1,19 @@
+.header__signin-button {
+    color: black;
+    width: 76px;
+    height: 32px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    background-color: #3DDC84;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 520px) {
+    .header__signin-link {
+        font-size: 10px;
+    }
+}

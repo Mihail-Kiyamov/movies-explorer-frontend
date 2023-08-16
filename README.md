@@ -1,0 +1,1 @@
+# Ссылка на макет: https://www.figma.com/file/PUQyoRSWTKJVP3MYQfEDwb/dark-3?type=design&mode=design&t=FbMFoXldZH3X6VfZ-0

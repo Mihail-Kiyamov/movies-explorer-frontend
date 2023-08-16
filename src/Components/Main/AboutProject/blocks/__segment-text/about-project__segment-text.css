@@ -1,0 +1,13 @@
+.about-project__segment-text {
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+@media screen and (max-width: 520px) {
+    .about-project__segment-text {
+        font-size: 11px;
+    }
+}

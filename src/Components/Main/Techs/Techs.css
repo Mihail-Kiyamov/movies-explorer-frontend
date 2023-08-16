@@ -1,0 +1,24 @@
+.techs {
+    background-color: #272727;
+    color: white;
+    padding: 100px 70px;
+}
+
+@media screen and (max-width: 770px) {
+    .techs {
+        padding: 90px 50px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .techs {
+        padding: 70px 18px;
+    }
+}
+
+@import url(./blocks/__line/techs__line.css);
+@import url(./blocks/__number-of-techs/techs__number-of-techs.css);
+@import url(./blocks/__techs-block/techs__techs-block.css);
+@import url(./blocks/__techs-blocks/techs__techs-blocks.css);
+@import url(./blocks/__text/techs__text.css);
+@import url(./blocks/__title/techs__title.css);

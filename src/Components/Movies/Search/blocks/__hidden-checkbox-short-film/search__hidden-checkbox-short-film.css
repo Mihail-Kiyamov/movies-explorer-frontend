@@ -1,0 +1,8 @@
+.search__hidden-checkbox-short-film {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: -1;
+    clip-path: inset(0 0 0 0);
+}

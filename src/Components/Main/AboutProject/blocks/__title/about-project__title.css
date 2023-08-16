@@ -1,0 +1,17 @@
+.about-project__title {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+    margin: 0 0 23px;
+    text-align: left;
+}
+
+@media screen and (max-width: 520px) {
+    .about-project__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        margin-bottom: 28px;
+    }
+}

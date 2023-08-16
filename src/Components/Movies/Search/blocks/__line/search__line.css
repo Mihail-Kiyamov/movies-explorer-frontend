@@ -1,0 +1,12 @@
+.search__line {
+    height: 1px;
+    width: 100%;
+    background-color: #424242;
+    margin-top: 70px;
+}
+
+@media screen and (max-width: 770px) {
+    .search__line {
+        margin-top: 50px;
+    }
+}

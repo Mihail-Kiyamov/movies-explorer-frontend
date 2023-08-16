@@ -1,0 +1,26 @@
+.footer {
+    background-color: #202020;
+    padding: 80px 70px 20px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 770px) {
+    .footer {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .footer {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+}
+
+@import url(./blocks/__container/footer__container.css);
+@import url(./blocks/__github-link/footer__github-link.css);
+@import url(./blocks/__line/footer__line.css);
+@import url(./blocks/__practicum-link/footer__practicum-link.css);
+@import url(./blocks/__title/footer__title.css);
+@import url(./blocks/__year/footer__year.css);
