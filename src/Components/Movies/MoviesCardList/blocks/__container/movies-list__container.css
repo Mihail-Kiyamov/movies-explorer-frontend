@@ -2,20 +2,21 @@
     display: grid;
     row-gap: 37px;
     column-gap: 24px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, max-content));
+    justify-items: center;
     justify-content: center;
 }
 
 @media screen and (max-width: 770px) {
     .movies-list__container {
         gap: 30px;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(210px, max-content));
     }
 }
 
 @media screen and (max-width: 520px) {
     .movies-list__container {
         gap: 14px;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
     }
 }

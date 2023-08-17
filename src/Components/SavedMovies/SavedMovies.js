@@ -7,7 +7,7 @@ function SavedMovies() {
             <Search>
 
             </Search>
-            <MoviesCardList>
+            <MoviesCardList isSavedMovies={true}>
 
             </MoviesCardList>
         </main>

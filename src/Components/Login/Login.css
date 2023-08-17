@@ -1,5 +1,5 @@
 .login {
-    width: 396px;
+    max-width: 396px;
     margin: 0 auto;
     padding: 70px 0;
     color: white;
@@ -10,14 +10,15 @@
 @media screen and (max-width: 770px) {
     .login {
         padding-top: 232px;
-        padding-bottom: 232px; 
+        padding-bottom: 232px;
     }
 }
 
 @media screen and (max-width: 520px) {
     .login {
+        max-width: 260px;
         padding-top: 56px;
-        padding-bottom: 30px; 
+        padding-bottom: 30px;
     }
 }
 

@@ -12,8 +12,8 @@ import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
-  const [isWindowMedium, setIsWindowMedium] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isWindowMedium, setIsWindowMedium] = useState(770 >= window.innerWidth);
+  const [isMobile, setIsMobile] = useState(520 >= window.innerWidth);
 
   useEffect(() => {
     const handleResizeWindow = () => {

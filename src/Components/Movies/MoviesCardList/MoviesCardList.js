@@ -1,7 +1,7 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { useState } from 'react';
 
-function MoviesCardList() {
+function MoviesCardList({ isSavedMovies }) {
     const [cards, setCards] = useState(
         [
             {
@@ -42,7 +42,7 @@ function MoviesCardList() {
             <div className='movies-list__container'>
                 {
                     cards.map((cardObj) => (
-                        <MoviesCard card={cardObj} />
+                        <MoviesCard card={cardObj} isSavedMovies={isSavedMovies} />
                     ))
                 }
             </div>
