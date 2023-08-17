@@ -10,9 +10,15 @@
     justify-content: center;
 }
 
+@media screen and (max-width: 770px) {
+    .promo {
+        height: 784px;
+    }
+}
+
 @media screen and (max-width: 520px) {
     .promo {
-        background-size: 348px;
+        background-size: 248px;
         height: 570px;
     }
 }

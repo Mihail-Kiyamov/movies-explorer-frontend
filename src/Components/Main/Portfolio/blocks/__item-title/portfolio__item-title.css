@@ -1,4 +1,6 @@
 .portfolio__item-title {
+    margin: 0;
+    margin-bottom: auto;
     font-size: 30px;
     font-style: normal;
     font-weight: 400;

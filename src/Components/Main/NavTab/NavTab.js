@@ -3,15 +3,15 @@ import { NavLink } from 'react-router-dom';
 function NavTab() {
     return (
         <section className='navtab'>
-            <NavLink to='/signup' className='navtab__link navtab__aboutproject-link'>
+            <a href='#about-project' className='navtab__link navtab__aboutproject-link'>
                 О проекте
-            </NavLink>
-            <NavLink to='/signup' className='navtab__link navtab__techs-link'>
+            </a>
+            <a href='#techs' className='navtab__link navtab__techs-link'>
                 Технологии
-            </NavLink>
-            <NavLink to='/signup' className='navtab__link navtab__aboutme-link'>
+            </a>
+            <a href='#about-me' className='navtab__link navtab__aboutme-link'>
                 Студент
-            </NavLink>
+            </a>
         </section>
     )
 }

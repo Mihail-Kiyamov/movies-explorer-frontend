@@ -13,7 +13,9 @@
 }
 
 @media screen and (max-width: 520px) {
-    .header__signin-link {
+    .header__signin-button {
         font-size: 10px;
+        width: 54px;
+        height: 26px;
     }
 }

@@ -1,5 +1,6 @@
 import './Profile.css';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Profile() {
     const [user, setUser] = useState({
@@ -17,8 +18,8 @@ function Profile() {
                 <p className="profile__text">E-mail</p>
                 <p className='profile__user-text'>{user.email}</p>
             </div>
-            <a className='profile__edit-button' type='button'>Редактировать</a>
-            <a className='profile__logout-button' type='button'>Выйти из аккаунта</a>
+            <a className='profile__edit-button' >Редактировать</a>
+            <NavLink className='profile__logout-button' to='/' >Выйти из аккаунта</NavLink>
         </main>
     )
 }

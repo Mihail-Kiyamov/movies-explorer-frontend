@@ -1,0 +1,16 @@
+.not-found-route__text {
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    margin-bottom: 184px;
+}
+
+@media screen and (max-width: 520px) {
+    .not-found-route__text {
+        font-size: 12px;
+        margin-bottom: 284px;
+    }
+}

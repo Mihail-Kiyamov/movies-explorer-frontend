@@ -1,5 +1,6 @@
 .portfolio__item {
     height: 70px;
+    margin-bottom: 20px;
     border-bottom: 1px solid #424242;
     box-sizing: border-box;
     display: flex;
@@ -9,6 +10,7 @@
 
 .portfolio__item:last-child {
     border-bottom: none;
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 520px) {

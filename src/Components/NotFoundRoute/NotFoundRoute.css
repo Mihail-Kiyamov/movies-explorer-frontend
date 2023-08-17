@@ -1,0 +1,27 @@
+.not-found-route {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 246px;
+    padding-bottom: 60px;
+}
+
+@media screen and (max-width: 770px) {
+    .not-found-route {
+        padding-top: 408px;
+        padding-bottom: 222px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .not-found-route {
+        padding-top: 329px;
+        padding-bottom: 30px;
+    }
+}
+
+@import url(./blocks/__back-link/not-found-route__back-link.css);
+@import url(./blocks/__text/not-found-route__text.css);
+@import url(./blocks/__title/not-found-route__title.css);

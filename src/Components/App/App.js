@@ -7,6 +7,7 @@ import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import NotFoundRoute from '../NotFoundRoute/NotFoundRoute';
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -39,6 +40,7 @@ function App() {
           <Route path='/profile' element={<Profile />} />
           <Route path='/signup' element={<Register />} />
           <Route path='/signin' element={<Login />} />
+          <Route path='/404' element={<NotFoundRoute />} />
         </Routes>
         <Footer
           isMobile={isMobile}

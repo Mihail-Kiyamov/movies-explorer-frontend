@@ -1,8 +1,5 @@
 .about-me__photo {
-    position: absolute;
     object-fit: cover;
-    right: 0;
-    top: 0;
     border-radius: 10px;
     width: 270px;
     height: 327px;
@@ -17,9 +14,8 @@
 
 @media screen and (max-width: 520px) {
     .about-me__photo {
-        position: relative;
-        max-width: 292px;
-        max-height: 352px;
+        width: 292px;
+        height: 352px;
         margin-bottom: 40px;
     }
 }

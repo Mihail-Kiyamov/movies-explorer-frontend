@@ -5,13 +5,13 @@
     font-weight: 400;
     line-height: 22px;
     text-align: left;
-    width: 600px;
+    max-width: 600px;
     margin: 0 0 100px;
 }
 
 @media screen and (max-width: 1030px) {
     .about-me__about {
-        width: 500px;
+        max-width: 500px;
     }
 }
 
@@ -20,7 +20,7 @@
         font-size: 12px;
         line-height: 18px;
         margin-bottom: 87px;
-        width: 364px;
+        max-width: 364px;
     }
 }
 

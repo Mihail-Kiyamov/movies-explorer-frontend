@@ -12,14 +12,14 @@ function Footer({ isMobile }) {
                         {!isMobile &&
                             <div className='footer__container'>
                                 <p className='footer__year'>© 2020</p>
-                                <a className='footer__practicum-link' href='https://practicum.yandex.ru/'>Яндекс.Практикум</a>
-                                <a className='footer__github-link' href='https://github.com/Mihail-Kiyamov?tab=repositories'>Github</a>
+                                <a className='footer__practicum-link' href='https://practicum.yandex.ru/' target="_blank">Яндекс.Практикум</a>
+                                <a className='footer__github-link' href='https://github.com/Mihail-Kiyamov?tab=repositories' target="_blank">Github</a>
                             </div>
                         }
                         {isMobile &&
                             <div className='footer__container'>
-                                <a className='footer__practicum-link' href='https://practicum.yandex.ru/'>Яндекс.Практикум</a>
-                                <a className='footer__github-link' href='https://github.com/Mihail-Kiyamov?tab=repositories'>Github</a>
+                                <a className='footer__practicum-link' href='https://practicum.yandex.ru/' target="_blank">Яндекс.Практикум</a>
+                                <a className='footer__github-link' href='https://github.com/Mihail-Kiyamov?tab=repositories' target="_blank">Github</a>
                                 <p className='footer__year'>© 2020</p>
                             </div>
                         }

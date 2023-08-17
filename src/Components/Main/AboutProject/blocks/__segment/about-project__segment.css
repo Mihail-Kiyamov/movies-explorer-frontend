@@ -44,7 +44,25 @@
     bottom: -27px;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 770px) {
+    .about-project__segment:nth-child(1) {
+        width: 140px;
+    }
+
+    .about-project__segment:nth-child(2) {
+        width: 528px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .about-project__segment:nth-child(1) {
+        width: 100px;
+    }
+
+    .about-project__segment:nth-child(2) {
+        width: 184px;
+    }
+
     .about-project__segment:nth-child(1)::after {
         font-size: 11px;
     }
