@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 
-.page_container {
+.page__container {
   max-width: 1280px;
   margin: auto;
 }

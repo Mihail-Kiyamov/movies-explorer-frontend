@@ -27,9 +27,9 @@ function Header({ isWindowMedium }) {
                         Регистрация
                     </NavLink>
                     <Link to='/signin' className='header__signin-link'>
-                        <button type="button" className='header__signin-button'>
-                            Войти
-                        </button>
+                        <div type="button" className='header__signin-button'>
+                            <p className='header__signin-text'>Войти</p>
+                        </div>
                     </Link>
                 </header>
             } />
@@ -46,10 +46,10 @@ function Header({ isWindowMedium }) {
                                     Сохранённые фильмы
                                 </NavLink>
                                 <Link to='/profile' className='header__profile-link'>
-                                    <button className='header__profile-button'>
+                                    <div className='header__profile-button'>
                                         Аккаунт
                                         <div className='header__profile-icon'></div>
-                                    </button>
+                                    </div>
                                 </Link>
                             </>}
                         {isWindowMedium &&
@@ -68,10 +68,10 @@ function Header({ isWindowMedium }) {
                                                 Сохранённые фильмы
                                             </NavLink>
                                             <Link to='/profile' className='header__profile-link'>
-                                                <button className='header__profile-button'>
+                                                <div className='header__profile-button'>
                                                     Аккаунт
                                                     <div className='header__profile-icon'></div>
-                                                </button>
+                                                </div>
                                             </Link>
                                             <img className='header__menu-close-icon' src={menuCloseIcon} alt='Закрыть меню' onClick={handleMobileMenuToggle} />
                                         </div>

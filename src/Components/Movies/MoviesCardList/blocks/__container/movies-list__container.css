@@ -10,11 +10,11 @@
 @media screen and (max-width: 770px) {
     .movies-list__container {
         gap: 30px;
-        grid-template-columns: repeat(auto-fit, minmax(210px, max-content));
+        grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
     }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 530px) {
     .movies-list__container {
         gap: 14px;
         grid-template-columns: repeat(auto-fit, minmax(200px, max-content));

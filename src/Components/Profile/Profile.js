@@ -12,7 +12,7 @@ function Profile() {
         <main className='profile'>
             <h1 className='profile__title'>{'Привет, ' + user.name + '!'}</h1>
             <div className='profile__container'>
-                <p className="profile__text" type="text">Имя</p>
+                <p className="profile__text" >Имя</p>
                 <p className='profile__user-text'>{user.name}</p>
                 <div className='profile__line'></div>
                 <p className="profile__text">E-mail</p>

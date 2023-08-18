@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div className="page">
-      <div className="page_container">
+      <div className="page__container">
         <Header
           isWindowMedium={isWindowMedium}
         />
