@@ -1,0 +1,7 @@
+.search__input-movie-label {
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}

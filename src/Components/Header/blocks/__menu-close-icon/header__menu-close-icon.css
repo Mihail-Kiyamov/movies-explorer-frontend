@@ -1,0 +1,14 @@
+.header__menu-close-icon {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 30px;
+    height: 30px;
+}
+
+@media screen and (max-width: 520px) {
+    .header__menu-close-icon {
+        top: 13px;
+        right: 13px;
+    }
+}

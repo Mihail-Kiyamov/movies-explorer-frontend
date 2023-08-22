@@ -1,0 +1,29 @@
+.movie-card {
+    max-width: 364px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: #222;
+    border-radius: 6px;
+    box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    margin: 0;
+}
+
+@media screen and (max-width: 770px) {
+    .movie-card {
+        max-width: 339px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .movie-card {
+        max-width: 300px;
+    }
+}
+
+@import url(./blocks/__duration/movie-card__duration.css);
+@import url(./blocks/__image/movie-card__image.css);
+@import url(./blocks/__like/movie-card__like.css);
+@import url(./blocks/__name/movie-card__name.css);
+@import url(./blocks/__delete/movie-card__delete.css);

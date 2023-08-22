@@ -1,0 +1,9 @@
+.movie-card__like {
+    background: url(../../../../../images/LikeButton.svg);
+    margin: 9px 16px 0 auto;
+    width: 30px;
+    height: 30px;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+}

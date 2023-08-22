@@ -1,0 +1,15 @@
+.profile__container {
+    color: white;
+    width: 410px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 220px;
+}
+
+@media screen and (max-width: 520px) {
+    .profile__container {
+        max-width: 260px;
+        margin-bottom: 379px;
+    }
+}

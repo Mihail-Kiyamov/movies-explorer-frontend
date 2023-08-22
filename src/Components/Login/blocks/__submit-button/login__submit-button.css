@@ -1,0 +1,16 @@
+.login__submit-button {
+    width: 100%;
+    height: 45px;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 520px) {
+    .login__submit-button {
+        font-size: 12px;
+    }
+}

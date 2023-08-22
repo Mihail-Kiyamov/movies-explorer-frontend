@@ -1,0 +1,14 @@
+.movie-card__delete {
+    background: url(../../../../../images/DeleteCardIcon.svg);
+    margin: 9px 16px 0 auto;
+    width: 30px;
+    height: 30px;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.movie-card:hover > .movie-card__delete {
+    visibility: visible;
+}

@@ -1,0 +1,17 @@
+.header__home-link {
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    color: white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 28px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 520px) {
+    .header__home-link {
+        margin-bottom: 24px;
+    }
+}

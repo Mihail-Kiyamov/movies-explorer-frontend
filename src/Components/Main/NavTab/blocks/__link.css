@@ -1,0 +1,19 @@
+.navtab__link {
+    color: white;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    text-decoration-line: underline;
+    margin-right: 40px;
+}
+
+.navtab__link:last-of-type {
+    margin-right: 0;
+}
+
+@media screen and (max-width: 520px) {
+    .navtab__link {
+        font-size: 11px;
+    }
+}

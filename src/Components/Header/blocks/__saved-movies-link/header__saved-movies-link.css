@@ -1,0 +1,19 @@
+.header__saved-movies-link {
+    color: white;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    margin-left: 16px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 770px) {
+    .header__saved-movies-link {
+        text-align: center;
+        font-feature-settings: 'clig' off, 'liga' off;
+        font-size: 18px;
+        line-height: normal;
+        margin-left: 0;
+    }
+}

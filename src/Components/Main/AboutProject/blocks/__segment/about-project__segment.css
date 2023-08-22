@@ -1,0 +1,73 @@
+.about-project__segment:nth-child(1) {
+    background-color: #3DDC84;
+    color: black;
+    width: 228px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.about-project__segment:nth-child(2) {
+    background-color: #303030;
+    color: white;
+    width: 912px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.about-project__segment:nth-child(1)::after {
+    content: 'Back-end';
+    color: #8B8B8B;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    position: absolute;
+    bottom: -27px;
+}
+
+.about-project__segment:nth-child(2)::after {
+    content: 'Front-end';
+    color: #8B8B8B;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    position: absolute;
+    bottom: -27px;
+}
+
+@media screen and (max-width: 770px) {
+    .about-project__segment:nth-child(1) {
+        width: 140px;
+    }
+
+    .about-project__segment:nth-child(2) {
+        width: 528px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .about-project__segment:nth-child(1) {
+        width: 100px;
+    }
+
+    .about-project__segment:nth-child(2) {
+        width: 184px;
+    }
+
+    .about-project__segment:nth-child(1)::after {
+        font-size: 11px;
+    }
+
+    .about-project__segment:nth-child(2)::after {
+        font-size: 11px;
+    }
+}

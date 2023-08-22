@@ -1,0 +1,11 @@
+.register__form-field_type_email::before {
+    content: 'E-mail';
+    color: #8B8B8B;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    left: 0;
+    top: -22px;
+}

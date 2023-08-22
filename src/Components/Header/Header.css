@@ -1,0 +1,41 @@
+.header {
+    color: white;
+    height: 74px;
+    display: flex;
+    background-color: #202020;
+    align-items: center;
+    padding: 0 70px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 770px) {
+    .header {
+        padding-left: 30px;
+        padding-right: 30px; 
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .header {
+        padding-left: 14px;
+        padding-right: 14px; 
+    }
+}
+
+@import url(./_theme/header_theme_blue.css);
+
+@import url(./blocks/__logo/header__logo.css);
+
+@import url(./blocks/__signin-button/header__signin-button.css);
+@import url(./blocks/__signup-link/header__signup-link.css);
+@import url(./blocks/__movies-link/header__movies-link.css);
+@import url(./blocks/__profile-button/header__profile-button.css);
+@import url(./blocks/__profile-icon/header__profile-icon.css);
+@import url(./blocks/__profile-link/header__profile-link.css);
+@import url(./blocks/__saved-movies-link/header__saved-movies-link.css);
+@import url(./blocks/__menu-icon/header__menu-icon.css);
+@import url(./blocks/__menu-layout/header__menu-layout.css);
+@import url(./blocks/__menu/header__menu.css);
+@import url(./blocks/__home-link/header__home-link.css);
+@import url(./blocks/__menu-close-icon/header__menu-close-icon.css);
+@import url(./blocks/__signin-link/header__signin-link.css);

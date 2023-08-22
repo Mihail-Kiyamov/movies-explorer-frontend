@@ -1,0 +1,23 @@
+.techs__title {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+    margin: 0 0 26px;
+    text-align: left;
+}
+
+@media screen and (max-width: 770px) {
+    .techs__title {
+        margin-bottom: 22px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .techs__title {
+        margin-bottom: 28px;
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+}

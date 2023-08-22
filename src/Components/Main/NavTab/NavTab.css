@@ -1,0 +1,9 @@
+.navtab {
+    height: 66px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #272727;
+}
+
+@import url(./blocks/__link.css);

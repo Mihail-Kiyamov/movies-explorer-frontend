@@ -1,0 +1,36 @@
+.register {
+    max-width: 396px;
+    margin: 0 auto;
+    padding: 70px 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 770px) {
+    .register {
+        padding-top: 232px;
+        padding-bottom: 232px; 
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .register {
+        max-width: 260px;
+        padding-top: 56px;
+        padding-bottom: 30px; 
+    }
+}
+
+@import url(./blocks/__input-error/register__input-error.css);
+@import url(./blocks/__input/register__input.css);
+@import url(./blocks/__input/_type/register__input_type_passwor.css);
+@import url(./blocks/__logo/register__logo.css);
+@import url(./blocks/__signin-link/register__signin-link.css);
+@import url(./blocks/__submit-button/register__submit-button.css);
+@import url(./blocks/__text/register__text.css);
+@import url(./blocks/__title/register__title.css);
+@import url(./blocks/__form-field/register__form-field.css);
+@import url(./blocks/__form-field/_type/register__form-field_type_email.css);
+@import url(./blocks/__form-field/_type/register__form-field_type_name.css);
+@import url(./blocks/__form-field/_type/register__form-field_type_password.css);

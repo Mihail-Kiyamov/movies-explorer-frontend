@@ -1,0 +1,17 @@
+.footer__github-link {
+    color: white;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 520px) {
+    .footer__github-link {
+        margin-bottom: 30px;
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,23 @@
+.techs__techs-block {
+    width: 90px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: #303030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.56px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 770px) {
+    .techs__techs-block {
+        font-size: 12px;
+        letter-spacing: -0.48px;
+    }
+}

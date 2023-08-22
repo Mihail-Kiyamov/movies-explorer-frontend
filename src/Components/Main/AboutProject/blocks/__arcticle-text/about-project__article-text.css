@@ -1,0 +1,22 @@
+.about-project__article-text {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    margin: 0;
+}
+
+@media screen and (max-width: 770px) {
+    .about-project__article-text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .about-project__article-text {
+        font-size: 11px;
+        line-height: 16px;
+    }
+}

@@ -1,0 +1,13 @@
+.techs__techs-blocks {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+@media screen and (max-width: 520px) {
+    .techs__techs-blocks {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, 90px);
+    }
+}

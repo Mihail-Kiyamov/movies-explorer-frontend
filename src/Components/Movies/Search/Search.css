@@ -1,0 +1,27 @@
+.search {
+    padding: 60px 70px 10px;
+    background-color: #202020;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 770px) {
+    .search {
+        padding: 80px 30px 10px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .search {
+        padding: 80px 14px 10px;
+    }
+}
+
+@import url(./blocks/__hidden-checkbox-short-film/search__hidden-checkbox-short-film.css);
+@import url(./blocks/__input-movie/search__input-movie.css);
+@import url(./blocks/__line/search__line.css);
+@import url(./blocks/__visible-checkbox-short-film/search__visible-checkbox-short-film.css);
+@import url(./blocks/__checkbox-short-film-label/search__checkbox-short-film-label.css);
+@import url(./blocks/__search-button/search__search-button.css);
+@import url(./blocks/__input-movie-label/search__input-movie-label.css);
