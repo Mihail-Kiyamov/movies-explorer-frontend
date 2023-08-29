@@ -1,0 +1,16 @@
+.profile__edit-cancel {
+    color: #4285F4;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 520px) {
+    .profile__edit-cancel {
+        font-size: 12px;
+    }
+}

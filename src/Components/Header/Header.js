@@ -5,7 +5,7 @@ import menuCloseIcon from '../../images/MenuCloseIcon.svg';
 import menuIcon from '../../images/MenuIcon.svg';
 import './Header.css';
 
-function Header({ isWindowMedium }) {
+function Header({ isWindowMedium, isLoggedIn }) {
     const navigate = useNavigate();
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
 
@@ -22,15 +22,34 @@ function Header({ isWindowMedium }) {
             <Route path='/' element={
                 <header className="header header_theme_blue">
                     <img className="header__logo" src={logo} alt="Лого Movie Explorer" onClick={navigateHome} />
-
-                    <NavLink to='/signup' className='header__signup-link'>
-                        Регистрация
-                    </NavLink>
-                    <Link to='/signin' className='header__signin-link'>
-                        <div type="button" className='header__signin-button'>
-                            <p className='header__signin-text'>Войти</p>
-                        </div>
-                    </Link>
+                    {!isLoggedIn &&
+                        <>
+                            <NavLink to='/signup' className='header__signup-link'>
+                                Регистрация
+                            </NavLink>
+                            <Link to='/signin' className='header__signin-link'>
+                                <div type="button" className='header__signin-button'>
+                                    <p className='header__signin-text'>Войти</p>
+                                </div>
+                            </Link>
+                        </>
+                    }
+                    {isLoggedIn &&
+                        <>
+                            <NavLink to='/movies' className='header__movies-link'>
+                                Фильмы
+                            </NavLink>
+                            <NavLink to='/saved-movies' className='header__saved-movies-link'>
+                                Сохранённые фильмы
+                            </NavLink>
+                            <Link to='/profile' className='header__profile-link'>
+                                <div className='header__profile-button'>
+                                    <p>Аккаунт</p>
+                                    <div className='header__profile-icon'></div>
+                                </div>
+                            </Link>
+                        </>
+                    }
                 </header>
             } />
             {["/movies", "/saved-movies", '/profile'].map((path) =>

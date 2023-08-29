@@ -26,3 +26,11 @@
 @import url(./blocks/__text/profile__text.css);
 @import url(./blocks/__title/profile__title.css);
 @import url(./blocks/__user-text/profile__user-text.css);
+@import url(./blocks/__form-field/profile__form-field.css);
+@import url(./blocks/__form-field/_type/profile__form-field_type_email.css);
+@import url(./blocks/__form-field/_type/profile__form-field_type_name.css);
+@import url(./blocks/__input/profile__input.css);
+@import url(./blocks/__input/_type/profile__input_type_email.css);
+@import url(./blocks/__edit-cancel/profile__edit-cancel.css);
+@import url(./blocks/__submit-button/profile__submit-button.css);
+@import url(./blocks/__submit-form/profile__submit-form.css);

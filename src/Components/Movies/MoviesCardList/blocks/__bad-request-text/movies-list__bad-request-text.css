@@ -1,0 +1,11 @@
+.movies-list__bad-request-text {
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.56px;
+    margin: 50px auto 50px;
+    max-width: 500px;
+}
