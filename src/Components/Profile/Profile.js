@@ -2,9 +2,8 @@ import './Profile.css';
 import { useContext, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CurrentUserContext } from '../../Context/CurrentUserContext';
-import mainApi from '../../utils/MainApi';
 
-function Profile() {
+function Profile({ onUserChange }) {
     const user = useContext(CurrentUserContext);
 
     const [isEdit, setIsEdit] = useState(false);
@@ -40,17 +39,8 @@ function Profile() {
     function handleChangeUser(e) {
         e.preventDefault();
 
-        mainApi.changeUser(formValue)
-            .then((data) => {
-                setFormValue({
-                    name: data.name,
-                    email: data.email,
-                });
-                setIsEdit(false);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        onUserChange(formValue)
+        handleCloseEdit();
     }
 
     return (

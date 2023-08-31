@@ -14,17 +14,17 @@ import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import * as auth from '../../utils/auth';
 import mainApi from '../../utils/MainApi';
+import moviesApi from '../../utils/MoviesApi';
 import { CurrentUserContext } from '../../Context/CurrentUserContext';
 
 function App() {
   const [isWindowMedium, setIsWindowMedium] = useState(770 >= window.innerWidth);
   const [isMobile, setIsMobile] = useState(520 >= window.innerWidth);
-  const [loggedIn, setLoggedIn] = useState(true);
-  const [currentUser, setCurrentUser] = useState({
-    name: 'Михаил',
-    email: 'mihailkiyamov@yandex.ru'
-  });
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  const [allMovies, setAllMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [isBadRequest, setIsBadRequest] = useState(false);
 
   const navigate = useNavigate();
 
@@ -59,9 +59,65 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
+        });
+
+      moviesApi.getMovies()
+        .then((movies) => {
+          movies.forEach(movie => {
+            const {
+              country,
+              director,
+              duration,
+              year,
+              description,
+              trailerLink,
+              nameRU,
+              nameEN,
+              id: movieId,
+            } = movie;
+            const {
+              url: image,
+            } = movie.image;
+            const {
+              url: thumbnail,
+            } = movie.image.formats.thumbnail;
+            const newMovie = {
+              country,
+              director,
+              duration,
+              year,
+              description,
+              image,
+              trailerLink,
+              nameRU,
+              nameEN,
+              thumbnail,
+              movieId,
+            };
+            if (savedMovies.find((savedMovie) => savedMovie.nameRU == newMovie.nameRU)) {
+              newMovie.isLiked = true;
+            }
+            setAllMovies((allMovies) => {
+              allMovies.push(newMovie);
+              return allMovies;
+            })
+          });
+        })
+        .catch(() => {
+          setIsBadRequest(true);
         })
     }
   }, [loggedIn]);
+
+  useEffect(() => {
+    let copy = Object.assign([], allMovies);
+    copy.map((m) => {
+      if (savedMovies.find((savedMovie) => savedMovie.nameRU == m.nameRU)) {
+        m.isLiked = true;
+      }
+    });
+    setAllMovies(copy);
+  }, [savedMovies])
 
   function handleRegister(name, email, password) {
     auth.register(name, email, password)
@@ -89,6 +145,57 @@ function App() {
       });
   }
 
+  function handleLikeClick(movie) {
+    movie.isLiked
+      ? deleteMovie(movie.movieId)
+      : SaveMovie(movie)
+  }
+
+  function SaveMovie(movie) {
+    mainApi.saveMovie(movie)
+      .then(() => {
+        let copy = Object.assign([], allMovies);
+        copy.map((m) => {
+          if (m.movieId === movie.movieId)
+            m.isLiked = true;
+        });
+        setAllMovies(copy);
+
+        copy = Object.assign([], savedMovies);
+        copy.unshift(movie);
+        setSavedMovies(copy);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function deleteMovie(movieId) {
+    mainApi.deleteMovie(movieId)
+      .then(() => {
+        setSavedMovies((savedMovies) => savedMovies.filter((m) => m.movieId !== movieId));
+        let copy = Object.assign([], allMovies);
+        copy.map((m) => {
+          if (m.movieId === movieId)
+            delete m.isLiked;
+        });
+        setAllMovies(copy);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  function handleChangeUser(formValue) {
+    mainApi.changeUser(formValue)
+      .then((data) => {
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -106,13 +213,17 @@ function App() {
               isLoggedIn={loggedIn}
               isWindowMedium={isWindowMedium}
               isMobile={isMobile}
-              savedMovies={savedMovies} />}
+              allMovies={allMovies}
+              savedMovies={savedMovies}
+              isBadRequest={isBadRequest}
+              onLikeClick={handleLikeClick} />}
             />
             <Route path='/saved-movies' element={<ProtectedRoute element={SavedMovies}
               isLoggedIn={loggedIn}
-              savedMovies={savedMovies} />
+              savedMovies={savedMovies}
+              onDelete={deleteMovie} />
             } />
-            <Route path='/profile' element={<ProtectedRoute element={Profile} isLoggedIn={loggedIn} />} />
+            <Route path='/profile' element={<ProtectedRoute element={Profile} isLoggedIn={loggedIn} onUserChange={handleChangeUser} />} />
 
             <Route path='/404' element={<NotFoundRoute />} />
           </Routes>

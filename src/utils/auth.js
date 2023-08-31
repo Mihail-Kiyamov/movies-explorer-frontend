@@ -10,6 +10,7 @@ function getResponse(res) {
 export function register(name, email, password) {
     return fetch(`${BASE_URL}/signup`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -21,6 +22,7 @@ export function register(name, email, password) {
 export function authorize(email, password) {
     return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json'
         },

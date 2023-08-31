@@ -23,7 +23,7 @@ class MainApi {
     changeUser(inputs) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
-            redentials: 'include',
+            credentials: 'include',
             headers: this._headers,
             body: JSON.stringify({
                 name: inputs.name,
@@ -36,8 +36,8 @@ class MainApi {
     getSavedMovies() {
         return fetch(`${this._baseUrl}/movies`, {
             method: 'GET',
-            credentials: 'include',
             headers: this._headers,
+            credentials: 'include',
         })
             .then(this._checkResponse)
     }

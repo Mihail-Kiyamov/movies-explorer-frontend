@@ -3,13 +3,12 @@ import { useState, useEffect } from 'react';
 import Search from './Search/Search';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
-import moviesApi from '../../utils/MoviesApi';
 
-function Movies({ isWindowMedium, isMobile, savedMovies }) {
-    const [allMovies, setAllMovies] = useState([]);
+function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick }) {
     const [filteredMovies, setFilteredMovies] = useState([])
     const [isPreloader, setIsPreloader] = useState(true);
-    const [isBadRequest, setIsBadRequest] = useState(false);
+    const [searchText, setSearchText] = useState('');
+    const [isShortMovies, SetIsShortMovies] = useState(false);
 
     const initialMovieCount = isMobile
         ? 5
@@ -27,51 +26,59 @@ function Movies({ isWindowMedium, isMobile, savedMovies }) {
         setIsPreloader(true);
 
         var oldSearch = JSON.parse(localStorage.getItem("movieSearch"));
-        moviesApi.getMovies()
-            .then((movies) => {
-                movies.forEach(movie => {
-                    if (savedMovies.find((savedMovie) => savedMovie.nameRU == movie.nameRU)) {
-                        movie.isLiked = true;
-                    }
 
-                });
-                setAllMovies(movies);
-                if (oldSearch) {
-                    setFilteredMovies(oldSearch.movies)
-                } else {
-                    setFilteredMovies(movies);
-                }
-                setIsPreloader(false);
-            })
-            .catch(() => {
-                setIsBadRequest(true);
-            })
+        if (oldSearch) {
+            setFilteredMovies(oldSearch.movies)
+        } else {
+            setFilteredMovies(allMovies)
+        }
+        setIsPreloader(false);
     }, [])
+
+    useEffect(() => {
+
+    })
 
     function handleAddMovies() {
         setVisibleMovieCount(visibleMovieCount + addedMoviesCount);
     }
 
-    function filterMovies(searchText, onlyShortMovies) {
+    function filterMovies(newSearchText, onlyShortMovies) {
+        setSearchText(newSearchText);
+        SetIsShortMovies(onlyShortMovies);
+
         onlyShortMovies
+            ? setFilteredMovies(allMovies.filter((movie) =>
+                movie.duration <= 40 &&
+                movie.nameRU.toLowerCase().includes(newSearchText.toLowerCase())
+            ))
+            : setFilteredMovies(allMovies.filter((movie) =>
+                movie.nameRU.toLowerCase().includes(newSearchText.toLowerCase())
+            ));
+
+        setVisibleMovieCount(initialMovieCount)
+    }
+
+    useEffect(() => {
+        isShortMovies
             ? setFilteredMovies(allMovies.filter((movie) =>
                 movie.duration <= 40 &&
                 movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
             ))
             : setFilteredMovies(allMovies.filter((movie) =>
                 movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
-            ));
+            ))
+    }, [allMovies])
 
-        setVisibleMovieCount(initialMovieCount)
-
+    useEffect(() => {
         var ObjectToLocalSave = {
             text: searchText,
-            isShortMovie: onlyShortMovies,
+            isShortMovie: isShortMovies,
             movies: filteredMovies,
         }
 
         localStorage.setItem('movieSearch', JSON.stringify(ObjectToLocalSave));
-    }
+    }, [filteredMovies])
 
     return (
         <main className='movies'>
@@ -79,7 +86,12 @@ function Movies({ isWindowMedium, isMobile, savedMovies }) {
 
             {isPreloader && <Preloader />}
             {!isPreloader &&
-                <MoviesCardList movies={filteredMovies.slice(0, visibleMovieCount)} isMoreMovies={filteredMovies[visibleMovieCount + 1]} onAddMovies={handleAddMovies} isBadRequest={isBadRequest} />
+                <MoviesCardList
+                    movies={filteredMovies.slice(0, visibleMovieCount)}
+                    isMoreMovies={filteredMovies[visibleMovieCount + 1]}
+                    onAddMovies={handleAddMovies}
+                    isBadRequest={isBadRequest}
+                    onLikeClick={onLikeClick} />
             }
         </main>
     )
