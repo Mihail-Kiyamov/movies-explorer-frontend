@@ -2,10 +2,22 @@ import Search from '../Movies/Search/Search';
 import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
 import { useEffect, useState } from 'react';
 
-function SavedMovies({ savedMovies, onDelete }) {
+function SavedMovies({ isWindowMedium, isMobile, savedMovies, onDelete }) {
     const [filteredMovies, setFilteredMovies] = useState(savedMovies)
     const [searchText, setSearchText] = useState('');
     const [isShortMovies, SetIsShortMovies] = useState(false);
+
+    const initialMovieCount = isMobile
+        ? 5
+        : isWindowMedium
+            ? 8
+            : 12;
+    const addedMoviesCount = isMobile
+        ? 2
+        : isWindowMedium
+            ? 2
+            : 3;
+    const [visibleMovieCount, setVisibleMovieCount] = useState(initialMovieCount);
 
     function filterMovies(newSearchText, onlyShortMovies) {
         setSearchText(newSearchText);
@@ -18,6 +30,7 @@ function SavedMovies({ savedMovies, onDelete }) {
             : setFilteredMovies(savedMovies.filter((movie) =>
                 movie.nameRU.toLowerCase().includes(newSearchText.toLowerCase())
             ))
+        setVisibleMovieCount(initialMovieCount)
     }
 
     useEffect(() => {
@@ -31,13 +44,19 @@ function SavedMovies({ savedMovies, onDelete }) {
             ))
     }, [savedMovies])
 
+    function handleAddMovies() {
+        setVisibleMovieCount(visibleMovieCount + addedMoviesCount);
+    }
+
     return (
         <main className='saved-movies'>
             <Search onSearch={filterMovies} />
 
             <MoviesCardList
                 isSavedMovies={true}
-                movies={filteredMovies.slice(0, 6)}
+                movies={filteredMovies.slice(0, visibleMovieCount)}
+                isMoreMovies={!!filteredMovies[visibleMovieCount + 1]}
+                onAddMovies={handleAddMovies}
                 onDelete={onDelete} />
         </main>
     )

@@ -88,7 +88,7 @@ function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick
             {!isPreloader &&
                 <MoviesCardList
                     movies={filteredMovies.slice(0, visibleMovieCount)}
-                    isMoreMovies={filteredMovies[visibleMovieCount + 1]}
+                    isMoreMovies={!!filteredMovies[visibleMovieCount + 1]}
                     onAddMovies={handleAddMovies}
                     isBadRequest={isBadRequest}
                     onLikeClick={onLikeClick} />

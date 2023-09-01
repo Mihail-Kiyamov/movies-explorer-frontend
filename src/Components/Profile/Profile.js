@@ -3,7 +3,7 @@ import { useContext, useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { CurrentUserContext } from '../../Context/CurrentUserContext';
 
-function Profile({ onUserChange }) {
+function Profile({ onUserChange, onSignout }) {
     const user = useContext(CurrentUserContext);
 
     const [isEdit, setIsEdit] = useState(false);
@@ -43,6 +43,10 @@ function Profile({ onUserChange }) {
         handleCloseEdit();
     }
 
+    function signout() {
+        onSignout()
+    }
+
     return (
         <main className='profile'>
             {!isEdit &&
@@ -56,7 +60,7 @@ function Profile({ onUserChange }) {
                         <p className='profile__user-text'>{user.email}</p>
                     </div>
                     <a className='profile__edit-button' onClick={handleOpenEdit} >Редактировать</a>
-                    <NavLink className='profile__logout-button' to='/' >Выйти из аккаунта</NavLink>
+                    <a className='profile__logout-button' onClick={signout} >Выйти из аккаунта</a>
                 </>
             }
             {isEdit &&

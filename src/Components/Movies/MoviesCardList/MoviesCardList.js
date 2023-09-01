@@ -1,5 +1,4 @@
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { useState } from 'react';
 
 function MoviesCardList({ isSavedMovies, movies, isMoreMovies, onAddMovies, isBadRequest, onLikeClick, onDelete }) {
 
@@ -10,7 +9,7 @@ function MoviesCardList({ isSavedMovies, movies, isMoreMovies, onAddMovies, isBa
                     movies.map((movieObj) => (
                         <MoviesCard 
                         movie={movieObj} 
-                        isSavedMovies={isSavedMovies} 
+                        isSavedMovies={isSavedMovies}
                         onLikeClick={onLikeClick}
                         onDelete={onDelete} />
                     ))

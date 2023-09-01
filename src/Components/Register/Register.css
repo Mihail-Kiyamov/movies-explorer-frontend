@@ -24,7 +24,6 @@
 
 @import url(./blocks/__input-error/register__input-error.css);
 @import url(./blocks/__input/register__input.css);
-@import url(./blocks/__input/_type/register__input_type_passwor.css);
 @import url(./blocks/__logo/register__logo.css);
 @import url(./blocks/__signin-link/register__signin-link.css);
 @import url(./blocks/__submit-button/register__submit-button.css);

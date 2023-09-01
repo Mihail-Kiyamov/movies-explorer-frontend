@@ -31,13 +31,23 @@ export function authorize(email, password) {
         .then(res => getResponse(res))
 };
 
-export function checkToken(token) {
+export function checkToken() {
     return fetch(`${BASE_URL}/users/me`, {
         method: 'GET',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
-        credentials: 'include',
     })
         .then(res => getResponse(res));
+}
+
+export function Signout() {
+    return fetch(`${BASE_URL}/signout`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
 }

@@ -9,7 +9,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFoundRoute from '../NotFoundRoute/NotFoundRoute';
 import ProtectedRoute from '../../utils/ProtectedRoute';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import * as auth from '../../utils/auth';
@@ -27,8 +27,20 @@ function App() {
   const [isBadRequest, setIsBadRequest] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    let path = location.pathname;
+    auth.checkToken()
+      .then((data) => {
+        if (data) {
+          setLoggedIn(true);
+          navigate(path, { replace: true });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
     const handleResizeWindow = () => {
       setIsWindowMedium(() => 770 >= window.innerWidth);
       setIsMobile(() => 520 >= window.innerWidth);
@@ -64,7 +76,7 @@ function App() {
       moviesApi.getMovies()
         .then((movies) => {
           movies.forEach(movie => {
-            const {
+            let {
               country,
               director,
               duration,
@@ -75,13 +87,13 @@ function App() {
               nameEN,
               id: movieId,
             } = movie;
-            const {
+            let {
               url: image,
             } = movie.image;
-            const {
+            let {
               url: thumbnail,
             } = movie.image.formats.thumbnail;
-            const newMovie = {
+            let newMovie = {
               country,
               director,
               duration,
@@ -94,7 +106,7 @@ function App() {
               thumbnail,
               movieId,
             };
-            if (savedMovies.find((savedMovie) => savedMovie.nameRU == newMovie.nameRU)) {
+            if (savedMovies.find(savedMovie => savedMovie.movieId == newMovie.movieId)) {
               newMovie.isLiked = true;
             }
             setAllMovies((allMovies) => {
@@ -112,7 +124,7 @@ function App() {
   useEffect(() => {
     let copy = Object.assign([], allMovies);
     copy.map((m) => {
-      if (savedMovies.find((savedMovie) => savedMovie.nameRU == m.nameRU)) {
+      if (savedMovies.find(savedMovie => savedMovie.movieId == m.movieId)) {
         m.isLiked = true;
       }
     });
@@ -196,6 +208,16 @@ function App() {
       });
   }
 
+  function handleSignout() {
+    auth.Signout()
+      .then(() => {
+        setLoggedIn(false);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -220,10 +242,15 @@ function App() {
             />
             <Route path='/saved-movies' element={<ProtectedRoute element={SavedMovies}
               isLoggedIn={loggedIn}
+              isWindowMedium={isWindowMedium}
+              isMobile={isMobile}
               savedMovies={savedMovies}
               onDelete={deleteMovie} />
             } />
-            <Route path='/profile' element={<ProtectedRoute element={Profile} isLoggedIn={loggedIn} onUserChange={handleChangeUser} />} />
+            <Route path='/profile' element={<ProtectedRoute element={Profile}
+              isLoggedIn={loggedIn}
+              onUserChange={handleChangeUser}
+              onSignout={handleSignout} />} />
 
             <Route path='/404' element={<NotFoundRoute />} />
           </Routes>
