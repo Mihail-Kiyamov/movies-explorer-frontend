@@ -9,9 +9,8 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFoundRoute from '../NotFoundRoute/NotFoundRoute';
 import ProtectedRoute from '../../utils/ProtectedRoute';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
 import * as auth from '../../utils/auth';
 import mainApi from '../../utils/MainApi';
 import moviesApi from '../../utils/MoviesApi';
@@ -75,6 +74,7 @@ function App() {
 
       moviesApi.getMovies()
         .then((movies) => {
+          const newMovies = []
           movies.forEach(movie => {
             let {
               country,
@@ -109,11 +109,9 @@ function App() {
             if (savedMovies.find(savedMovie => savedMovie.movieId == newMovie.movieId)) {
               newMovie.isLiked = true;
             }
-            setAllMovies((allMovies) => {
-              allMovies.push(newMovie);
-              return allMovies;
-            })
+            newMovies.push(newMovie);
           });
+          setAllMovies(newMovies);
         })
         .catch(() => {
           setIsBadRequest(true);
@@ -133,9 +131,9 @@ function App() {
 
   function handleRegister(name, email, password) {
     auth.register(name, email, password)
-      .then((res) => {
-        if (res.data) {
-          navigate('/signin', { replace: true });
+      .then((data) => {
+        if (data) {
+          handleLogin(email, password);
         }
       })
       .catch(err => {
@@ -160,10 +158,10 @@ function App() {
   function handleLikeClick(movie) {
     movie.isLiked
       ? deleteMovie(movie.movieId)
-      : SaveMovie(movie)
+      : saveMovie(movie)
   }
 
-  function SaveMovie(movie) {
+  function saveMovie(movie) {
     mainApi.saveMovie(movie)
       .then(() => {
         let copy = Object.assign([], allMovies);
@@ -199,9 +197,10 @@ function App() {
   }
 
   function handleChangeUser(formValue) {
-    mainApi.changeUser(formValue)
+    return mainApi.changeUser(formValue)
       .then((data) => {
         setCurrentUser(data);
+        return true;
       })
       .catch((err) => {
         console.log(err);
@@ -212,6 +211,8 @@ function App() {
     auth.Signout()
       .then(() => {
         setLoggedIn(false);
+        localStorage.clear();
+        navigate('/');
       })
       .catch(err => {
         console.log(err);
@@ -227,12 +228,19 @@ function App() {
             isWindowMedium={isWindowMedium}
           />
           <Routes>
-            <Route path='/signup' element={<Register onRegister={handleRegister} />} />
-            <Route path='/signin' element={<Login onLogin={handleLogin} />} />
+            <Route path='/signup' element={<ProtectedRoute element={Register} 
+            onRegister={handleRegister}
+            isLoggedIn={!loggedIn}
+            altPath={'/'} />} />
+            <Route path='/signin' element={<ProtectedRoute element={Login} 
+            onLogin={handleLogin}
+            isLoggedIn={!loggedIn}
+            altPath={'/'} />} />
             <Route path='/' element={<Main />} />
 
             <Route path='/movies' element={<ProtectedRoute element={Movies}
               isLoggedIn={loggedIn}
+              altPath={'/signin'}
               isWindowMedium={isWindowMedium}
               isMobile={isMobile}
               allMovies={allMovies}
@@ -242,6 +250,7 @@ function App() {
             />
             <Route path='/saved-movies' element={<ProtectedRoute element={SavedMovies}
               isLoggedIn={loggedIn}
+              altPath={'/signin'}
               isWindowMedium={isWindowMedium}
               isMobile={isMobile}
               savedMovies={savedMovies}
@@ -249,10 +258,11 @@ function App() {
             } />
             <Route path='/profile' element={<ProtectedRoute element={Profile}
               isLoggedIn={loggedIn}
+              altPath={'/signin'}
               onUserChange={handleChangeUser}
               onSignout={handleSignout} />} />
 
-            <Route path='/404' element={<NotFoundRoute />} />
+            <Route path='*' element={<NotFoundRoute />} />
           </Routes>
           <Footer
             isMobile={isMobile}

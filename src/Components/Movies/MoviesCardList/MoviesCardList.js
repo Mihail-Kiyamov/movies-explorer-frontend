@@ -14,7 +14,7 @@ function MoviesCardList({ isSavedMovies, movies, isMoreMovies, onAddMovies, isBa
                         onDelete={onDelete} />
                     ))
                 }
-                {(movies.length == 0 && !isBadRequest) && <p className='movies-list__not-found-text'>Ничего не найдено</p>}
+                {(movies.length === 0 && !isBadRequest) && <p className='movies-list__not-found-text'>Ничего не найдено</p>}
                 {isBadRequest && <p className='movies-list__bad-request-text'>Во время запроса произошла ошибка.
                     Возможно, проблема с соединением или сервер недоступен.
                     Подождите немного и попробуйте ещё раз</p>}

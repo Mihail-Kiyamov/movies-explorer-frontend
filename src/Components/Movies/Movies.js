@@ -9,6 +9,7 @@ function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick
     const [isPreloader, setIsPreloader] = useState(true);
     const [searchText, setSearchText] = useState('');
     const [isShortMovies, SetIsShortMovies] = useState(false);
+    const [oldSearch, setOldSearch] = useState(JSON.parse(localStorage.getItem("movieSearch")));
 
     const initialMovieCount = isMobile
         ? 5
@@ -25,8 +26,6 @@ function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick
     useEffect(() => {
         setIsPreloader(true);
 
-        var oldSearch = JSON.parse(localStorage.getItem("movieSearch"));
-
         if (oldSearch) {
             setFilteredMovies(oldSearch.movies)
         } else {
@@ -35,9 +34,26 @@ function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick
         setIsPreloader(false);
     }, [])
 
-    useEffect(() => {
+    // useEffect(() => {
+    //     isShortMovies
+    //         ? setFilteredMovies(allMovies.filter((movie) =>
+    //             movie.duration <= 40 &&
+    //             movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
+    //         ))
+    //         : setFilteredMovies(allMovies.filter((movie) =>
+    //             movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
+    //         ))
+    // }, [allMovies])
 
-    })
+    useEffect(() => {
+        var ObjectToLocalSave = {
+            text: searchText,
+            isShortMovie: isShortMovies,
+            movies: filteredMovies,
+        }
+
+        localStorage.setItem('movieSearch', JSON.stringify(ObjectToLocalSave));
+    }, [filteredMovies])
 
     function handleAddMovies() {
         setVisibleMovieCount(visibleMovieCount + addedMoviesCount);
@@ -58,27 +74,6 @@ function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick
 
         setVisibleMovieCount(initialMovieCount)
     }
-
-    useEffect(() => {
-        isShortMovies
-            ? setFilteredMovies(allMovies.filter((movie) =>
-                movie.duration <= 40 &&
-                movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
-            ))
-            : setFilteredMovies(allMovies.filter((movie) =>
-                movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
-            ))
-    }, [allMovies])
-
-    useEffect(() => {
-        var ObjectToLocalSave = {
-            text: searchText,
-            isShortMovie: isShortMovies,
-            movies: filteredMovies,
-        }
-
-        localStorage.setItem('movieSearch', JSON.stringify(ObjectToLocalSave));
-    }, [filteredMovies])
 
     return (
         <main className='movies'>

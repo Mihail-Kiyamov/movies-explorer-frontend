@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
 
-function Search({ onSearch }) {
+function Search({ onSearch, isSavedMovies }) {
     const [searchText, setSearchText] = useState('');
     const [isChecked, setIsChecked] = useState(false);
+    const [oldSearch, setOldSearch] = useState(JSON.parse(localStorage.getItem("movieSearch")));
 
     useEffect(() => {
-        var oldSearch = JSON.parse(localStorage.getItem('movieSearch'));
-        if (oldSearch) {
-            setSearchText(oldSearch.text);
-            setIsChecked(oldSearch.isShortMovie);
+        if (!isSavedMovies) {
+            if (oldSearch) {
+                setSearchText(oldSearch.text);
+                setIsChecked(oldSearch.isShortMovie);
+            }
+        }
+        if (isSavedMovies) {
+            setSearchText('');
+            setIsChecked(false);
         }
     }, [])
 

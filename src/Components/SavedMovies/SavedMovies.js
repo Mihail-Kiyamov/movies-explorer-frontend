@@ -22,6 +22,7 @@ function SavedMovies({ isWindowMedium, isMobile, savedMovies, onDelete }) {
     function filterMovies(newSearchText, onlyShortMovies) {
         setSearchText(newSearchText);
         SetIsShortMovies(onlyShortMovies);
+
         onlyShortMovies
             ? setFilteredMovies(savedMovies.filter((movie) =>
                 movie.duration <= 40 &&
@@ -50,7 +51,7 @@ function SavedMovies({ isWindowMedium, isMobile, savedMovies, onDelete }) {
 
     return (
         <main className='saved-movies'>
-            <Search onSearch={filterMovies} />
+            <Search onSearch={filterMovies} isSavedMovies={true} />
 
             <MoviesCardList
                 isSavedMovies={true}

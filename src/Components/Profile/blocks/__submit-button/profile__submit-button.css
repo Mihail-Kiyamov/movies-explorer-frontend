@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.profile__submit-button[disabled] {
+    opacity: 0.8;
+}
+
 @media screen and (max-width: 520px) {
     .profile__submit-button {
         font-size: 12px;
