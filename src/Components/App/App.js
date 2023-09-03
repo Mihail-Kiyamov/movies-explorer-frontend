@@ -243,7 +243,7 @@ function App() {
 
             <Route path='/movies' element={<ProtectedRoute element={Movies}
               isLoggedIn={loggedIn}
-              altPath={'/signin'}
+              altPath={'/'}
               isWindowMedium={isWindowMedium}
               isMobile={isMobile}
               allMovies={allMovies}
@@ -253,7 +253,7 @@ function App() {
             />
             <Route path='/saved-movies' element={<ProtectedRoute element={SavedMovies}
               isLoggedIn={loggedIn}
-              altPath={'/signin'}
+              altPath={'/'}
               isWindowMedium={isWindowMedium}
               isMobile={isMobile}
               savedMovies={savedMovies}
@@ -261,7 +261,7 @@ function App() {
             } />
             <Route path='/profile' element={<ProtectedRoute element={Profile}
               isLoggedIn={loggedIn}
-              altPath={'/signin'}
+              altPath={'/'}
               onUserChange={handleChangeUser}
               onSignout={handleSignout} />} />
 

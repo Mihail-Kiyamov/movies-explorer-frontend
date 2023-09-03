@@ -31,10 +31,10 @@
 @import url(./blocks/__form-field/_type/profile__form-field_type_email.css);
 @import url(./blocks/__form-field/_type/profile__form-field_type_name.css);
 @import url(./blocks/__input/profile__input.css);
-@import url(./blocks/__input/_type/profile__input_type_email.css);
 @import url(./blocks/__edit-cancel/profile__edit-cancel.css);
 @import url(./blocks/__submit-button/profile__submit-button.css);
 @import url(./blocks/__submit-form/profile__submit-form.css);
 @import url(./blocks/__popup-success/profile__popup-success.css);
 @import url(./blocks/__popup-text/profile__popup-text.css);
 @import url(./blocks/__popup-close/profile__popup-close.css);
+@import url(./blocks/__input-error/profile__input-error.css);

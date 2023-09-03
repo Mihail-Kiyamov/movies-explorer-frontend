@@ -11,6 +11,10 @@ function Profile({ onUserChange, onSignout }) {
         name: '',
         email: ''
     })
+    const [errorsText, setErrorsText] = useState({
+        name: '',
+        email: ''
+    })
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     useEffect(() => {
@@ -43,10 +47,21 @@ function Profile({ onUserChange, onSignout }) {
         if (user.name === formValue.name && user.email === formValue.email) {
             formsIsValid = false;
         }
-        
+
         //name
         if (formValue.name.length < 2 || formValue.name.length > 30) {
             formsIsValid = false;
+            errorsText.name = 'Имя должно быть больше 1 и меньше 31 символов';
+            setErrorsText({
+                ...errorsText,
+                name: 'Имя должно быть больше 1 и меньше 31 символов'
+            })
+        } else {
+            errorsText.name = '';
+            setErrorsText({
+                ...errorsText,
+                name: ''
+            })
         }
 
         //email
@@ -54,6 +69,15 @@ function Profile({ onUserChange, onSignout }) {
             /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         )) {
             formsIsValid = false;
+            setErrorsText({
+                ...errorsText,
+                email: 'Введите email'
+            })
+        } else {
+            setErrorsText({
+                ...errorsText,
+                email: ''
+            })
         }
 
         setIsActiveButton(formsIsValid);
@@ -105,10 +129,12 @@ function Profile({ onUserChange, onSignout }) {
                     <label className="profile__form-field profile__form-field_type_name">
                         <input className="profile__input profile__input_type_name" value={formValue.name} onChange={handleChange} type='text' name="name"
                             placeholder="Имя" required />
+                        <span className="profile__input-error">{errorsText.name}</span>
                     </label>
                     <label className="profile__form-field profile__form-field_type_email">
                         <input className="profile__input profile__input_type_email" value={formValue.email} onChange={handleChange} type='email' name="email"
                             placeholder="E-mail" required />
+                        <span className="profile__input-error">{errorsText.email}</span>
                     </label>
                     <input className='profile__submit-button' type='submit' value='Сохранить' disabled={!isActiveButton} />
                     <a className='profile__edit-cancel' onClick={handleCloseEdit} >Отменить</a>
