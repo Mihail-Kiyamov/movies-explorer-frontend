@@ -25,6 +25,8 @@ function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick
 
     useEffect(() => {
         setIsPreloader(true);
+        setSearchText(oldSearch.text);
+        SetIsShortMovies(oldSearch.isShortMovie);
 
         if (oldSearch) {
             setFilteredMovies(oldSearch.movies)

@@ -67,55 +67,54 @@ function App() {
       mainApi.getSavedMovies()
         .then((data) => {
           setSavedMovies(data);
+          moviesApi.getMovies()
+            .then((movies) => {
+              const newMovies = []
+              movies.forEach(movie => {
+                let {
+                  country,
+                  director,
+                  duration,
+                  year,
+                  description,
+                  trailerLink,
+                  nameRU,
+                  nameEN,
+                  id: movieId,
+                } = movie;
+                let {
+                  url: image,
+                } = movie.image;
+                let {
+                  url: thumbnail,
+                } = movie.image.formats.thumbnail;
+                let newMovie = {
+                  country,
+                  director,
+                  duration,
+                  year,
+                  description,
+                  image,
+                  trailerLink,
+                  nameRU,
+                  nameEN,
+                  thumbnail,
+                  movieId,
+                };
+                if (data.find(savedMovie => savedMovie.movieId == newMovie.movieId)) {
+                  newMovie.isLiked = true;
+                }
+                newMovies.push(newMovie);
+              });
+              setAllMovies(newMovies);
+            })
+            .catch(() => {
+              setIsBadRequest(true);
+            })
         })
         .catch((err) => {
           console.log(err);
         });
-
-      moviesApi.getMovies()
-        .then((movies) => {
-          const newMovies = []
-          movies.forEach(movie => {
-            let {
-              country,
-              director,
-              duration,
-              year,
-              description,
-              trailerLink,
-              nameRU,
-              nameEN,
-              id: movieId,
-            } = movie;
-            let {
-              url: image,
-            } = movie.image;
-            let {
-              url: thumbnail,
-            } = movie.image.formats.thumbnail;
-            let newMovie = {
-              country,
-              director,
-              duration,
-              year,
-              description,
-              image,
-              trailerLink,
-              nameRU,
-              nameEN,
-              thumbnail,
-              movieId,
-            };
-            if (savedMovies.find(savedMovie => savedMovie.movieId == newMovie.movieId)) {
-              newMovie.isLiked = true;
-            }
-            newMovies.push(newMovie);
-          });
-          setAllMovies(newMovies);
-        })
-        .catch(() => {
-          setIsBadRequest(true);
-        })
     }
   }, [loggedIn]);
 
@@ -232,14 +231,14 @@ function App() {
             isWindowMedium={isWindowMedium}
           />
           <Routes>
-            <Route path='/signup' element={<ProtectedRoute element={Register} 
-            onRegister={handleRegister}
-            isLoggedIn={!loggedIn}
-            altPath={'/'} />} />
-            <Route path='/signin' element={<ProtectedRoute element={Login} 
-            onLogin={handleLogin}
-            isLoggedIn={!loggedIn}
-            altPath={'/'} />} />
+            <Route path='/signup' element={<ProtectedRoute element={Register}
+              onRegister={handleRegister}
+              isLoggedIn={!loggedIn}
+              altPath={'/'} />} />
+            <Route path='/signin' element={<ProtectedRoute element={Login}
+              onLogin={handleLogin}
+              isLoggedIn={!loggedIn}
+              altPath={'/'} />} />
             <Route path='/' element={<Main />} />
 
             <Route path='/movies' element={<ProtectedRoute element={Movies}
