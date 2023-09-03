@@ -16,7 +16,7 @@
     }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 540px) {
     .movie-card {
         max-width: 300px;
     }
@@ -25,5 +25,6 @@
 @import url(./blocks/__duration/movie-card__duration.css);
 @import url(./blocks/__image/movie-card__image.css);
 @import url(./blocks/__like/movie-card__like.css);
+@import url(./blocks/__like/_active/movie-card__like_acive.css);
 @import url(./blocks/__name/movie-card__name.css);
 @import url(./blocks/__delete/movie-card__delete.css);

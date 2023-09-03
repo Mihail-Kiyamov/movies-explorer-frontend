@@ -10,7 +10,7 @@
     }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 540px) {
     .movies-list {
         padding: 40px 10px 80px;
     }
@@ -19,3 +19,5 @@
 @import url(../MoviesCard/MoviesCard.css);
 @import url(./blocks/__container/movies-list__container.css);
 @import url(./blocks/__more-button/movies-list__more-button.css);
+@import url(./blocks/__not-found-text/movies-list__not-found-text.css);
+@import url(./blocks/__bad-request-text/movies-list__bad-request-text.css);

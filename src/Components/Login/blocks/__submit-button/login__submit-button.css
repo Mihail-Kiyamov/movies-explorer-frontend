@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.login__submit-button[disabled] {
+    opacity: 0.8;
+}
+
 @media screen and (max-width: 520px) {
     .login__submit-button {
         font-size: 12px;

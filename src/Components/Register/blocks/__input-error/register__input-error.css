@@ -6,11 +6,4 @@
     line-height: normal;
     text-align: left;
     height: 12px;
-    margin-bottom: 69px;
-}
-
-@media screen and (max-width: 520px) {
-    .register__input-error {
-        margin-bottom: 157px;
-    }
 }

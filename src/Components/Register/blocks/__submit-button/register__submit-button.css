@@ -13,6 +13,10 @@
     line-height: normal;
 }
 
+.register__submit-button[disabled] {
+    opacity: 0.8;
+}
+
 @media screen and (max-width: 520px) {
     .register__submit-button {
         font-size: 12px;

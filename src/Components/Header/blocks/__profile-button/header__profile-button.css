@@ -1,6 +1,8 @@
 .header__profile-button {
     width: 100px;
     height: 32px;
+    padding-left: 11px;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     border: none;

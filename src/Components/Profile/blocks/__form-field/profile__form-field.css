@@ -1,0 +1,10 @@
+.profile__form-field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.profile__form-field:last-of-type {
+    margin-bottom: 157px;
+}

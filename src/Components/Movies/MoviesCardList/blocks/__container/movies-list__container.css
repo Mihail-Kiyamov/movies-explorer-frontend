@@ -14,9 +14,9 @@
     }
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 540px) {
     .movies-list__container {
         gap: 14px;
-        grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+        grid-template-columns: repeat(auto-fit, minmax(230px, max-content));
     }
 }
