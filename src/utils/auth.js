@@ -42,7 +42,7 @@ export function checkToken() {
         .then(res => getResponse(res));
 }
 
-export function Signout() {
+export function signout() {
     return fetch(`${BASE_URL}/signout`, {
         method: 'POST',
         credentials: 'include',

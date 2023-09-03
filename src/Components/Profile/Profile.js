@@ -36,23 +36,40 @@ function Profile({ onUserChange, onSignout }) {
             [name]: value
         });
     }
-
     useEffect(() => {
+        let formsIsValid = true;
+
+        //Сравнение с юзером
         if (user.name === formValue.name && user.email === formValue.email) {
-            setIsActiveButton(false);
-        } else {
-            setIsActiveButton(true);
-        };
+            formsIsValid = false;
+        }
+        
+        //name
+        if (formValue.name.length < 2 || formValue.name.length > 30) {
+            formsIsValid = false;
+        }
+
+        //email
+        if (!formValue.email.match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )) {
+            formsIsValid = false;
+        }
+
+        setIsActiveButton(formsIsValid);
     }, [formValue])
 
     function handleChangeUser(e) {
         e.preventDefault();
 
-        if (onUserChange(formValue)) {
-            handleCloseEdit();
-            handleOpenPopup();
-        };
-
+        onUserChange(formValue)
+            .then((result) => {
+                console.log(result)
+                if (result) {
+                    handleCloseEdit();
+                    handleOpenPopup();
+                }
+            });
     }
 
     function signout() {

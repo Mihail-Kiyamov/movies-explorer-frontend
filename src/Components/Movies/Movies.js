@@ -34,17 +34,6 @@ function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick
         setIsPreloader(false);
     }, [])
 
-    // useEffect(() => {
-    //     isShortMovies
-    //         ? setFilteredMovies(allMovies.filter((movie) =>
-    //             movie.duration <= 40 &&
-    //             movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
-    //         ))
-    //         : setFilteredMovies(allMovies.filter((movie) =>
-    //             movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
-    //         ))
-    // }, [allMovies])
-
     useEffect(() => {
         var ObjectToLocalSave = {
             text: searchText,
@@ -55,6 +44,19 @@ function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick
         localStorage.setItem('movieSearch', JSON.stringify(ObjectToLocalSave));
     }, [filteredMovies])
 
+    useEffect(() => {
+        if (allMovies.length !== 0) {
+            isShortMovies
+                ? setFilteredMovies(allMovies.filter((movie) =>
+                    movie.duration <= 40 &&
+                    movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
+                ))
+                : setFilteredMovies(allMovies.filter((movie) =>
+                    movie.nameRU.toLowerCase().includes(searchText.toLowerCase())
+                ));
+        }
+    }, [allMovies])
+
     function handleAddMovies() {
         setVisibleMovieCount(visibleMovieCount + addedMoviesCount);
     }
@@ -63,14 +65,16 @@ function Movies({ isWindowMedium, isMobile, allMovies, isBadRequest, onLikeClick
         setSearchText(newSearchText);
         SetIsShortMovies(onlyShortMovies);
 
-        onlyShortMovies
-            ? setFilteredMovies(allMovies.filter((movie) =>
-                movie.duration <= 40 &&
-                movie.nameRU.toLowerCase().includes(newSearchText.toLowerCase())
-            ))
-            : setFilteredMovies(allMovies.filter((movie) =>
-                movie.nameRU.toLowerCase().includes(newSearchText.toLowerCase())
-            ));
+        if (allMovies.length !== 0) {
+            onlyShortMovies
+                ? setFilteredMovies(allMovies.filter((movie) =>
+                    movie.duration <= 40 &&
+                    movie.nameRU.toLowerCase().includes(newSearchText.toLowerCase())
+                ))
+                : setFilteredMovies(allMovies.filter((movie) =>
+                    movie.nameRU.toLowerCase().includes(newSearchText.toLowerCase())
+                ));
+        }
 
         setVisibleMovieCount(initialMovieCount)
     }

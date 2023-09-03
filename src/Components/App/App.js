@@ -199,16 +199,20 @@ function App() {
   function handleChangeUser(formValue) {
     return mainApi.changeUser(formValue)
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(currentUser => ({
+          ...currentUser,
+          ...data
+        }));
         return true;
       })
       .catch((err) => {
         console.log(err);
+        return false;
       });
   }
 
   function handleSignout() {
-    auth.Signout()
+    auth.signout()
       .then(() => {
         setLoggedIn(false);
         localStorage.clear();
